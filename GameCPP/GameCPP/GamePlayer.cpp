@@ -34,7 +34,7 @@ GamePlayer::GamePlayer(std::string nickNm, std::string gameName) {
 }
 
 void GamePlayer::compete(int argc, char* args[], int dumpLevel) {
-	std::string host = "www.frazee-family.com";//tournamentParams().stringValue("HOST");
+	std::string host = tournamentParams().stringValue("HOST");
     int port = (argc == 1) ? tournamentParams().intValue("PORT")
              : std::atoi(args[1]);
     if (!client.create(host, port)) {

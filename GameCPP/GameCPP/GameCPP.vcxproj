@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AlphaBetaBreakthroughPlayer.cpp" />
     <ClCompile Include="BoardGameMove.cpp" />
     <ClCompile Include="BoardGameState.cpp" />
     <ClCompile Include="BreakthroughState.cpp" />
@@ -19,6 +20,7 @@
     <ClCompile Include="GamePlayer.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateFactory.cpp" />
+    <ClCompile Include="Heuristic.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Network.cpp" />
     <ClCompile Include="Params.cpp" />
@@ -26,6 +28,7 @@
     <ClCompile Include="RandomDomineeringPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlphaBetaBreakthroughPlayer.h" />
     <ClInclude Include="BoardGameMove.h" />
     <ClInclude Include="BoardGameState.h" />
     <ClInclude Include="BreakthroughMove.h" />
@@ -39,6 +42,7 @@
     <ClInclude Include="GamePlayer.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateFactory.h" />
+    <ClInclude Include="Heuristic.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Network.h" />
     <ClInclude Include="Params.h" />
@@ -64,13 +68,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
