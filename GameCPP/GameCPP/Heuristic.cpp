@@ -1,6 +1,6 @@
 #include "Heuristic.h"
 
-double Heuristic::feature1(BreakThroughState &state){
+double Heuristic::feature1(BreakthroughState &state){
 	/* Current generic feature name 'feature1'
 	 * Feature: For each piece, add its distance from its own starting rows.
 	 		Return the (home sum - away sum).
@@ -10,29 +10,29 @@ double Heuristic::feature1(BreakThroughState &state){
 	double AwaySum = 0;
 	std::vector<char> board = *state.getBoard1D();
 
-	char currentPlayerSymbol = state.getCurPlayerSymbol();
+	char currentPlayerSymbol = state.getCurPlayerSym();
 
 	for (int i = 0; i < state.ROWS; i++) {
 		for (int j = 0; j < state.COLS; j++) {
 
 			char cell = state.getCell(i, j);
 
-			if ( cell == state.getCurPlayerSymbol()) {
+			if (cell == state.getCurPlayerSym()) {
 				HomeSum += 7 - i;
-			} else if (cell == state.getCurOpponentSymbol()) {
+			} else if (cell == state.getCurOpponentSym()) {
 				AwaySum += i;
 			} else
 				continue;
 		}
 	}
 
-	if (state.getCurPlayerCymbol() == state.HOMESYM)
+	if (state.getCurPlayerSym() == state.HOMESYM)
 		return HomeSum - AwaySum;
 	else
 		return AwaySum - HomeSum;
 }
 
-double Heuristic::feature2(BreakThroughState &state){
+double Heuristic::feature2(BreakthroughState &state){
 	/* Current generic feature name 'feautre2'
 	 *
 	 */

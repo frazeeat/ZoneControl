@@ -12,11 +12,11 @@ public:
 	double beta;
 
 
-	double feature1(BreakThroughState &state);
+	double feature1(BreakthroughState &state);
 
-	double feature2(BreakThroughState &state);
+	double feature2(BreakthroughState &state);
 	
-	double evaluateState(BreakThroughState &state);
+	double evaluateState(BreakthroughState &state);
 	
 	double firstHeuristic(BreakthroughState &state, double weight);
 };
