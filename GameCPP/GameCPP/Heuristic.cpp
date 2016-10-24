@@ -32,7 +32,7 @@ double Heuristic::feature1(BreakThroughState &state){
 		return AwaySum - HomeSum;
 }
 
-double Heuristic::feature1(BreakThroughState &state){
+double Heuristic::feature2(BreakThroughState &state){
 	/* Current generic feature name 'feautre2'
 	 *
 	 */
