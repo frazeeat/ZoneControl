@@ -6,7 +6,7 @@
 #include "BreakthroughState.h"
 #include "BreakthroughMove.h"
 #include <stdio.h>
-
+#include "ScoredBreakthroughMove.h"
 class AlphaBetaBreakthroughPlayer : public GamePlayer {
 public:
 	AlphaBetaBreakthroughPlayer(std::string nickname);
@@ -14,6 +14,13 @@ public:
 	GameMove *getMove(GameState &state,
 		const std::string &lastMv) override;
 private:
+	void alphaBeta(BreakthroughState brd, int currDepth,
+		double alpha, double beta);
+	boolean terminalValue(GameState &brd, ScoredBreakthroughMove mv);
+	ScoredBreakthroughMove mvStack[];
+
 };
+
+
 
 #endif
