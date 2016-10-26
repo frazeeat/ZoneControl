@@ -57,6 +57,12 @@
     <ClCompile Include="AlphaBetaBreakthroughPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="Heuristic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+>>>>>>> 421f8eb6a37efe9c8feac5356eca09b330aae27b
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoardGameMove.h">
@@ -116,7 +122,11 @@
     <ClInclude Include="AlphaBetaBreakthroughPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="ScoredBreakthroughMove.h">
+=======
+    <ClInclude Include="Heuristic.h">
+>>>>>>> 421f8eb6a37efe9c8feac5356eca09b330aae27b
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

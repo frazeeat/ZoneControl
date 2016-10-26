@@ -1,6 +1,7 @@
 #include "AlphaBetaBreakthroughPlayer.h"
 #include "BreakthroughMove.h"
 #include "BreakthroughState.h"
+#include "Heuristic.h"
 
 
 AlphaBetaBreakthroughPlayer::AlphaBetaBreakthroughPlayer(std::string nickname)
@@ -9,7 +10,12 @@ const double MAX_SCORE = 100;
 const int DEPTH_LIMIT = 3;
 GameMove* AlphaBetaBreakthroughPlayer::getMove(GameState &state,
 	const std::string &lastMv) {
+	Heuristic h;
+	
 	BreakthroughState st = static_cast<BreakthroughState&>(state);
+
+	h.firstHeuristic(st,1.0);
+
 	std::vector<BreakthroughMove> mvArray;
 	for (int r = 0; r < st.ROWS; r++) {
 		for (int c = 0; c < st.COLS; c++) {

@@ -5,7 +5,10 @@
 //  Created by Yunlong Nick Liu on 6/19/15.
 //  Copyright (c) 2015 Yunlong Nick Liu. All rights reserved.
 //
+<<<<<<< HEAD
 #include "RandomBreakthroughPlayer.h"
+=======
+>>>>>>> 421f8eb6a37efe9c8feac5356eca09b330aae27b
 #include "AlphaBetaBreakthroughPlayer.h"
 #include "main.h"
 
@@ -54,7 +57,11 @@ void sometests() {
 }
 
 int main(int argc, char *argv[]) {
+<<<<<<< HEAD
     AlphaBetaBreakthroughPlayer p("RandomCPP");
+=======
+    AlphaBetaBreakthroughPlayer p("AlphaBeta");
+>>>>>>> 421f8eb6a37efe9c8feac5356eca09b330aae27b
 //	p.solvePuzzles({ "bt1.txt", "bt2.txt", "bt3.txt", "bt4.txt" });
     p.compete(argc, argv);   // Compete in tournament
     return 0;
