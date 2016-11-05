@@ -12,11 +12,11 @@ public:
 	double beta;
 
 
-	double feature1(BreakthroughState &state);
+	double feature1(BreakthroughState &state, int row, int col);
 
-	double feature2(BreakthroughState &state);
+	double feature2(BreakthroughState &state, int row, int col);
 
-	double feature3(BreakthroughState &state);
+	double feature3(BreakthroughState &state, int row, int col);
 	
 	double evaluateState(BreakthroughState &state);
 	
