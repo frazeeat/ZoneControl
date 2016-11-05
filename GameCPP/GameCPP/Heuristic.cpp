@@ -112,16 +112,18 @@ double Heuristic::evaluateState(BreakthroughState &state){
 	int rows = state.ROWS;
 	int cols = state.COLS;
 	double score = 0;
-
+	double w1 = .4,
+	       w2 = .3,
+	       w3 = .3;
 	/* For each feature: 
 	 *	Calculate the score of it - >0 means it favors HOME, <0 favors AWAY.
 	 *	Sum the results of the features, using different weights, in this way
 	 *	SCORE = (W1 * F1(S)) + (W2 * F2(S)) + (W3 * F3(S))
 	*/
 
-	score += feature1(state);
-	score += feature2(state);
-	score += feature3(state);
+	score += w1 * feature1(state);
+	score += w2 * feature2(state);
+	score += w3 * feature3(state);
 
 	return score;
 
