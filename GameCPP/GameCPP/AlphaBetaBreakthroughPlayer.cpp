@@ -16,7 +16,7 @@ GameMove* AlphaBetaBreakthroughPlayer::getMove(GameState &state,
 	BreakthroughState st = static_cast<BreakthroughState&>(state);
 
 	for (int i = 0; i < DepthLimit; i++) {
-		mvStack[i] = ScoredBreakthroughMove(0,0,0,0,0);
+		mvStack[i] = ScoredBreakthroughMove(0, 0, 0, 0,((st.getWho() == Who::HOME)?DBL_MIN:DBL_MAX));
 	}
 	/*std::vector<BreakthroughMove> mvArray;
 	/for (int r = 0; r < st.ROWS; r++) {
@@ -37,7 +37,7 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 	double alpha, double beta){
 	boolean isMaximize = (brd.getWho() == Who::HOME);
 	boolean isMinimize = !isMaximize;
-	boolean isTerminal = terminalValue(brd, mvStack[currDepth]);
+	boolean isTerminal = terminalValue(brd, &mvStack[currDepth]);
 	std::vector<BreakthroughMove> mvArray;
 	for (int r = 0; r < brd.ROWS; r++) {
 		for (int c = 0; c < brd.COLS; c++) {
@@ -51,10 +51,11 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 		}
 	}
 	if (isTerminal) {
-
+		
 	}
 	else if (currDepth == DepthLimit-1) {
 		mvStack[currDepth].setScore(Eval.evaluateState(brd));// evalBoard(brd));
+		//printf("Score: %d", mvStack[currDepth].score);
 	}
 	else {
 		double bestScore = (isMaximize ?
@@ -74,13 +75,16 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 			if (isMaximize && nextMove.score > bestMove.score) {
 				bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
 				mvStack[currDepth].set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
+				//printf("Maximum Score: %d\n", nextMove.score);
 			}
 			else if (!isMaximize && nextMove.score < bestMove.score) {
 				bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
 				mvStack[currDepth].set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
+				//printf("Minimal Score: %d\n", nextMove.score);
 			}
 
 			// Update alpha and beta. Perform pruning, if possible.
+			//printf("Test");
 			if (isMinimize) {
 				beta = min(bestMove.score, beta);
 				if (bestMove.score <= alpha || bestMove.score == -MAX_SCORE) {
@@ -97,18 +101,18 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 	}
 }
 
-boolean AlphaBetaBreakthroughPlayer::terminalValue(GameState &brd, ScoredBreakthroughMove mv) {
+boolean AlphaBetaBreakthroughPlayer::terminalValue(GameState &brd, ScoredBreakthroughMove *mv) {
 	Status status = brd.getStatus();
 	boolean isTerminal = true;
 
 	if (status == Status::HOME_WIN) {
-		mv.setScore(MAX_SCORE);
+		mv->setScore(MAX_SCORE);
 	}
 	else if (status == Status::AWAY_WIN) {
-		mv.setScore(-MAX_SCORE);
+		mv->setScore(-MAX_SCORE);
 	}
 	else if (status == Status::DRAW) {
-		mv.setScore(0);
+		mv->setScore(0);
 	}
 	else {
 		isTerminal = false;

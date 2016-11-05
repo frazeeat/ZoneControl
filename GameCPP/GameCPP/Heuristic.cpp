@@ -26,7 +26,7 @@ double Heuristic::feature1(BreakthroughState &state){
 				continue;
 		}
 	}
-
+	printf("Home: %d Away: %d", HomeSum, AwaySum);
 	if (state.getCurPlayerSym() == state.HOMESYM)
 		return HomeSum - AwaySum;
 	else
@@ -62,7 +62,7 @@ double Heuristic::feature2(BreakthroughState &state){
 			}
 		}
 	}
-
+	printf("H2: Score %d", score);
 	if (state.getCurPlayerSym() == state.HOMESYM) {
 		return score;
 	} else {
@@ -100,7 +100,7 @@ double Heuristic::feature3(BreakthroughState &state) {
 			}
 		}
 	}
-
+	printf(" H3: Score %d\n", score);
 	if (state.getCurPlayerSym() == state.HOMESYM) {
 		return score;
 	} else {
@@ -112,9 +112,9 @@ double Heuristic::evaluateState(BreakthroughState &state){
 	int rows = state.ROWS;
 	int cols = state.COLS;
 	double score = 0;
-	double w1 = .4,
-	       w2 = .3,
-	       w3 = .3;
+	double w1 = .6,
+	       w2 = .2,
+	       w3 = .2;
 	/* For each feature: 
 	 *	Calculate the score of it - >0 means it favors HOME, <0 favors AWAY.
 	 *	Sum the results of the features, using different weights, in this way
@@ -124,7 +124,7 @@ double Heuristic::evaluateState(BreakthroughState &state){
 	score += w1 * feature1(state);
 	score += w2 * feature2(state);
 	score += w3 * feature3(state);
-
+	printf("Score: %d\n", score);
 	return score;
 
 }
