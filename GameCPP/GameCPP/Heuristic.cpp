@@ -47,8 +47,8 @@ double Heuristic::feature2(BreakthroughState &state){
 
 	*/
 
-	for (int i = 0; i < state.rows; i++) {
-		for (int j = 0; j < state.cols; j++) {
+	for (int i = 0; i < state.ROWS; i++) {
+		for (int j = 0; j < state.COLS; j++) {
 			char cell = state.getCell(i, j);
 
 			if (cell == state.HOMESYM){ // If home piece, add supports to score
@@ -79,8 +79,8 @@ double Heuristic::feature3(BreakthroughState &state) {
 	 */
 	double score = 0;
 
-	for (int i = 0; i < state.rows; i++) {
-		for (int j = 0; j < state.cols; j++) {
+	for (int i = 0; i < state.ROWS; i++) {
+		for (int j = 0; j < state.COLS; j++) {
 			char cell = state.getCell(i, j);
 
 			if (cell == state.HOMESYM) { // If home piece, add to score.
