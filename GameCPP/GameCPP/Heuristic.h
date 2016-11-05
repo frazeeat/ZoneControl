@@ -15,6 +15,8 @@ public:
 	double feature1(BreakthroughState &state);
 
 	double feature2(BreakthroughState &state);
+
+	double feature3(BreakthroughState &state);
 	
 	double evaluateState(BreakthroughState &state);
 	
