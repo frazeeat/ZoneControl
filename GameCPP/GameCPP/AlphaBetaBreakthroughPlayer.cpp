@@ -6,18 +6,20 @@
 
 AlphaBetaBreakthroughPlayer::AlphaBetaBreakthroughPlayer(std::string nickname)
 : GamePlayer(nickname, "Breakthrough") {}
+Heuristic Eval;
 const double MAX_SCORE = 100;
-const int DEPTH_LIMIT = 3;
+long BeginTurnTime;
+const long MAX_TURN_TIME = 5;
 GameMove* AlphaBetaBreakthroughPlayer::getMove(GameState &state,
 	const std::string &lastMv) {
-	Heuristic h;
 	
 	BreakthroughState st = static_cast<BreakthroughState&>(state);
 
-	h.firstHeuristic(st,1.0);
-
-	std::vector<BreakthroughMove> mvArray;
-	for (int r = 0; r < st.ROWS; r++) {
+	for (int i = 0; i < DepthLimit; i++) {
+		mvStack[i] = ScoredBreakthroughMove(0,0,0,0,0);
+	}
+	/*std::vector<BreakthroughMove> mvArray;
+	/for (int r = 0; r < st.ROWS; r++) {
 		for (int c = 0; c < st.COLS; c++) {
 			int rowDelta = state.getWho() == Who::HOME ? +1 : -1;
 			for (int dc = -1; dc <= +1; dc++) {
@@ -27,9 +29,9 @@ GameMove* AlphaBetaBreakthroughPlayer::getMove(GameState &state,
 				}
 			}
 		}
-	}
-
-	return new BreakthroughMove(mvArray[rand() % mvArray.size()]);
+	}*/
+	alphaBeta(st, 0, DBL_MIN, DBL_MAX);
+	return mvStack[0].Move;
 }
 void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth,
 	double alpha, double beta){
@@ -51,14 +53,14 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 	if (isTerminal) {
 
 	}
-	else if (currDepth == DEPTH_LIMIT) {
-		mvStack[currDepth].setScore(0);// evalBoard(brd));
+	else if (currDepth == DepthLimit-1) {
+		mvStack[currDepth].setScore(Eval.evaluateState(brd));// evalBoard(brd));
 	}
 	else {
 		double bestScore = (isMaximize ?
 		DBL_MIN : DBL_MAX);
-		ScoredBreakthroughMove bestMove;
-		ScoredBreakthroughMove nextMove;
+		ScoredBreakthroughMove bestMove = mvStack[currDepth];
+		ScoredBreakthroughMove nextMove = mvStack[currDepth+1];
 		
 		for (int i = 0; i < mvArray.size();i++){
 			bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), bestScore);
@@ -71,9 +73,11 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 			// Check out the results, relative to what we've seen before
 			if (isMaximize && nextMove.score > bestMove.score) {
 				bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
+				mvStack[currDepth].set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
 			}
 			else if (!isMaximize && nextMove.score < bestMove.score) {
-				bestMove.set(mvArray[i].row1(), mvArray[i].col2(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
+				bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
+				mvStack[currDepth].set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
 			}
 
 			// Update alpha and beta. Perform pruning, if possible.
