@@ -12,12 +12,16 @@ public:
 	double beta;
 
 
-	double feature1(BreakthroughState &state, int row, int col);
+	double feature1(BreakthroughState &state, int row, int col, char cell);
 
-	double feature2(BreakthroughState &state, int row, int col);
+	double feature2(BreakthroughState &state, int row, int col, char cell);
 
-	double feature3(BreakthroughState &state, int row, int col);
+	double feature3(BreakthroughState &state, int row, int col, char cell);
+
+	double feature4(BreakthroughState &state, int row, int col, char cell);
 	
+	double defensivePlayFeature(BreakthroughState &state, int row, int col, char cell);
+
 	double evaluateState(BreakthroughState &state);
 	
 	double firstHeuristic(BreakthroughState &state, double weight);
