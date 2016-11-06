@@ -16,7 +16,12 @@ GameMove* AlphaBetaBreakthroughPlayer::getMove(GameState &state,
 	BreakthroughState st = static_cast<BreakthroughState&>(state);
 
 	for (int i = 0; i < DepthLimit; i++) {
-		mvStack[i] = ScoredBreakthroughMove(0, 0, 0, 0,((st.getWho() == Who::HOME)?DBL_MIN:DBL_MAX));
+		if (i % 2 == 0){
+			mvStack[i] = ScoredBreakthroughMove(0, 0, 0, 0, ((st.getWho() == Who::HOME) ? -DBL_MAX : DBL_MAX));
+		}
+		else{
+			mvStack[i] = ScoredBreakthroughMove(0, 0, 0, 0, ((st.getWho() == Who::AWAY) ? -DBL_MAX : DBL_MAX));
+		}
 	}
 	/*std::vector<BreakthroughMove> mvArray;
 	/for (int r = 0; r < st.ROWS; r++) {
@@ -30,7 +35,8 @@ GameMove* AlphaBetaBreakthroughPlayer::getMove(GameState &state,
 			}
 		}
 	}*/
-	alphaBeta(st, 0, DBL_MIN, DBL_MAX);
+	alphaBeta(st, 0, -DBL_MAX, DBL_MAX);
+	printf("Final Score: %f", mvStack[0].score);
 	return mvStack[0].Move;
 }
 void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth,
@@ -59,7 +65,7 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 	}
 	else {
 		double bestScore = (isMaximize ?
-		DBL_MIN : DBL_MAX);
+		-DBL_MAX : DBL_MAX);
 		ScoredBreakthroughMove bestMove = mvStack[currDepth];
 		ScoredBreakthroughMove nextMove = mvStack[currDepth+1];
 		
@@ -67,10 +73,11 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 			bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), bestScore);
 			ScoredBreakthroughMove tempMv = ScoredBreakthroughMove(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), 0);
 			BreakthroughState tempBrd = brd;
-			brd.makeMove(tempMv);
+			brd.makeMove(*tempMv.Move);
 			alphaBeta(brd, currDepth + 1, alpha, beta);  // Check out move
 			brd = tempBrd;
-
+			ScoredBreakthroughMove bestMove = mvStack[currDepth];
+			ScoredBreakthroughMove nextMove = mvStack[currDepth + 1];
 			// Check out the results, relative to what we've seen before
 			if (isMaximize && nextMove.score > bestMove.score) {
 				bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
@@ -87,13 +94,13 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 			//printf("Test");
 			if (isMinimize) {
 				beta = min(bestMove.score, beta);
-				if (bestMove.score <= alpha || bestMove.score == -MAX_SCORE) {
+				if (bestMove.score <= alpha || bestMove.score == -DBL_MAX) {
 					return;
 				}
 			}
 			else {
 				alpha = max(bestMove.score, alpha);
-				if (bestMove.score >= beta || bestMove.score == MAX_SCORE) {
+				if (bestMove.score >= beta || bestMove.score == DBL_MAX) {
 					return;
 				}
 			}
@@ -106,10 +113,10 @@ boolean AlphaBetaBreakthroughPlayer::terminalValue(GameState &brd, ScoredBreakth
 	boolean isTerminal = true;
 
 	if (status == Status::HOME_WIN) {
-		mv->setScore(MAX_SCORE);
+		mv->setScore(DBL_MAX);
 	}
 	else if (status == Status::AWAY_WIN) {
-		mv->setScore(-MAX_SCORE);
+		mv->setScore(-DBL_MAX);
 	}
 	else if (status == Status::DRAW) {
 		mv->setScore(0);

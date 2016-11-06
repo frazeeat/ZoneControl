@@ -6,14 +6,14 @@ double Heuristic::feature1(BreakthroughState &state, int row, int col){
 	 * Feature: For the given piece, add its distance from its own starting rows.
 	 		Return the (home sum - away sum).
 	 */
-	int distance;
+	int distance = 0;
 	char cell = state.getCell(row, col);
 	if (cell == state.HOMESYM) {
 		distance = row;
 	} else if (cell == state.AWAYSYM) {
 		distance = 7 - row;
 	}
-
+	//printf("Distance: %d", distance);
 	if (state.getCurPlayerSym() == state.HOMESYM){
 		return distance;
 	} else {
@@ -64,8 +64,8 @@ double Heuristic::feature2(BreakthroughState &state, int row, int col){
 	} else {
 		score = 0;
 	}
-
-	if (state.getCurPlaySym() == state.HOMESYM) {
+	//printf("Score: %f", score);
+	if (state.getCurPlayerSym() == state.HOMESYM) {
 		return score;
 	} else {
 		return -1 * score;
@@ -112,7 +112,7 @@ double Heuristic::feature3(BreakthroughState &state, int row, int col) {
 	 */
 
 	char cell = state.getCell(row, col);
-	double score;
+	double score = 0;
 
 	if (col != 0 && state.getCell(row, col-1) == cell) {
 		score++;
@@ -120,8 +120,8 @@ double Heuristic::feature3(BreakthroughState &state, int row, int col) {
 	if (col != 7 && state.getCell(row, col+1) == cell) {
 		score++;
 	}
-
-	if (state.getCurPlaySym() == state.HOMESYM) {
+	//printf("H3 Score: %f\n", score);
+	if (state.getCurPlayerSym() == state.HOMESYM) {
 		return score;
 	} else {
 		return -1 * score;
@@ -182,7 +182,7 @@ double Heuristic::evaluateState(BreakthroughState &state){
 	}
 
 
-	printf("Score: %d\n", score);
+	printf("Score: %f\n", score);
 	//score += w1 * feature1(state);
 	//score += w2 * feature2(state);
 	//score += w3 * feature3(state);

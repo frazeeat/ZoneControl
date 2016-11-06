@@ -7,7 +7,7 @@
 class ScoredBreakthroughMove : public BreakthroughMove {
 public:
 	ScoredBreakthroughMove(){
-
+		score = 0;
 	}
 	ScoredBreakthroughMove(int r1, int c1, int r2, int c2, double s) {
 		Move = new BreakthroughMove(r1, c1, r2, c2);
