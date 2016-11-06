@@ -182,7 +182,7 @@ double Heuristic::evaluateState(BreakthroughState &state){
 	}
 
 
-	printf("Score: %f\n", score);
+	//printf("Score: %f\n", score);
 	//score += w1 * feature1(state);
 	//score += w2 * feature2(state);
 	//score += w3 * feature3(state);

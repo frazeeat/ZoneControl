@@ -17,7 +17,7 @@ private:
 	void alphaBeta(BreakthroughState brd, int currDepth,
 		double alpha, double beta);
 	boolean terminalValue(GameState &brd, ScoredBreakthroughMove *mv);
-#define DepthLimit 5
+#define DepthLimit 3
 	ScoredBreakthroughMove mvStack[DepthLimit];
 
 

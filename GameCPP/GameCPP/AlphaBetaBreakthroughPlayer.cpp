@@ -7,7 +7,6 @@
 AlphaBetaBreakthroughPlayer::AlphaBetaBreakthroughPlayer(std::string nickname)
 : GamePlayer(nickname, "Breakthrough") {}
 Heuristic Eval;
-const double MAX_SCORE = 100;
 long BeginTurnTime;
 const long MAX_TURN_TIME = 5;
 GameMove* AlphaBetaBreakthroughPlayer::getMove(GameState &state,
@@ -66,41 +65,44 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 	else {
 		double bestScore = (isMaximize ?
 		-DBL_MAX : DBL_MAX);
+
 		ScoredBreakthroughMove bestMove = mvStack[currDepth];
-		ScoredBreakthroughMove nextMove = mvStack[currDepth+1];
-		
+		ScoredBreakthroughMove nextMove = mvStack[currDepth + 1];
 		for (int i = 0; i < mvArray.size();i++){
-			bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), bestScore);
+			
 			ScoredBreakthroughMove tempMv = ScoredBreakthroughMove(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), 0);
 			BreakthroughState tempBrd = brd;
 			brd.makeMove(*tempMv.Move);
 			alphaBeta(brd, currDepth + 1, alpha, beta);  // Check out move
 			brd = tempBrd;
-			ScoredBreakthroughMove bestMove = mvStack[currDepth];
-			ScoredBreakthroughMove nextMove = mvStack[currDepth + 1];
+			//bestMove.setScore(mvStack[currDepth].score);
+			nextMove.setScore(mvStack[currDepth + 1].score);
+			//bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), mvStack[currDepth].score);
+			//bestMove = mvStack[currDepth];
+			//nextMove = mvStack[currDepth + 1];
 			// Check out the results, relative to what we've seen before
-			if (isMaximize && nextMove.score > bestMove.score) {
+			if (isMaximize && (nextMove.score > bestMove.score)) {
 				bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
 				mvStack[currDepth].set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
-				//printf("Maximum Score: %d\n", nextMove.score);
+				printf("Current Depth: %d Maximum Score: %f\n",currDepth, nextMove.score);
 			}
-			else if (!isMaximize && nextMove.score < bestMove.score) {
+			else if (!isMaximize && (nextMove.score < bestMove.score)) {
 				bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
 				mvStack[currDepth].set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
-				//printf("Minimal Score: %d\n", nextMove.score);
+				printf("Current Depth: %d Minimal Score: %f\n",currDepth, nextMove.score);
 			}
 
 			// Update alpha and beta. Perform pruning, if possible.
 			//printf("Test");
 			if (isMinimize) {
 				beta = min(bestMove.score, beta);
-				if (bestMove.score <= alpha || bestMove.score == -DBL_MAX) {
+				if (beta <= alpha || beta == -DBL_MAX) {//bestMove.score <= alpha || bestMove.score == -DBL_MAX) {
 					return;
 				}
 			}
 			else {
 				alpha = max(bestMove.score, alpha);
-				if (bestMove.score >= beta || bestMove.score == DBL_MAX) {
+				if (alpha >= beta || alpha == DBL_MAX) {
 					return;
 				}
 			}

@@ -1,13 +1,9 @@
-﻿Build started 11/5/2016 7:58:30 PM.
+﻿Build started 11/6/2016 6:21:52 PM.
      1>Project "C:\Users\Stephen\Desktop\CSE486\GameProject\ZoneControl\GameCPP\GameCPP\GameCPP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft SDKs\Windows" /AI"C:\Program Files (x86)\Microsoft SDKs\Windows" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AlphaBetaBreakthroughPlayer.cpp main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft SDKs\Windows" /AI"C:\Program Files (x86)\Microsoft SDKs\Windows" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AlphaBetaBreakthroughPlayer.cpp
          AlphaBetaBreakthroughPlayer.cpp
-     1>c:\users\stephen\desktop\cse486\gameproject\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(72): warning C4018: '<' : signed/unsigned mismatch
-         Generating Code...
-         Compiling...
-         main.cpp
-         Generating Code...
+     1>c:\users\stephen\desktop\cse486\gameproject\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(71): warning C4018: '<' : signed/unsigned mismatch
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Stephen\Desktop\CSE486\GameProject\ZoneControl\GameCPP\Debug\GameCPP.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Stephen\Desktop\CSE486\GameProject\ZoneControl\GameCPP\Debug\GameCPP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Stephen\Desktop\CSE486\GameProject\ZoneControl\GameCPP\Debug\GameCPP.lib" /MACHINE:X86 Debug\AlphaBetaBreakthroughPlayer.obj
          Debug\BoardGameMove.obj
@@ -29,4 +25,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.04
+Time Elapsed 00:00:01.28
