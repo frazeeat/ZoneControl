@@ -43,18 +43,6 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 	boolean isMaximize = (brd.getWho() == Who::HOME);
 	boolean isMinimize = !isMaximize;
 	boolean isTerminal = terminalValue(brd, &mvStack[currDepth]);
-	std::vector<BreakthroughMove> mvArray;
-	for (int r = 0; r < brd.ROWS; r++) {
-		for (int c = 0; c < brd.COLS; c++) {
-			int rowDelta = brd.getWho() == Who::HOME ? +1 : -1;
-			for (int dc = -1; dc <= +1; dc++) {
-				BreakthroughMove mv(r, c, r + rowDelta, c + dc);
-				if (brd.moveOK(mv)) {
-					mvArray.push_back(BreakthroughMove(mv));
-				}
-			}
-		}
-	}
 	if (isTerminal) {
 		
 	}
@@ -63,45 +51,59 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 		//printf("Score: %d", mvStack[currDepth].score);
 	}
 	else {
+
+		std::vector<BreakthroughMove> mvArray;
+		for (int r = 0; r < brd.ROWS; r++) {
+			for (int c = 0; c < brd.COLS; c++) {
+				int rowDelta = brd.getWho() == Who::HOME ? +1 : -1;
+				for (int dc = -1; dc <= +1; dc++) {
+					BreakthroughMove mv(r, c, r + rowDelta, c + dc);
+					if (brd.moveOK(mv)) {
+						mvArray.push_back(BreakthroughMove(mv));
+					}
+				}
+			}
+		}
+		std::random_shuffle(mvArray.begin(), mvArray.end());
 		double bestScore = (isMaximize ?
 		-DBL_MAX : DBL_MAX);
-
-		ScoredBreakthroughMove bestMove = mvStack[currDepth];
-		ScoredBreakthroughMove nextMove = mvStack[currDepth + 1];
+		ScoredBreakthroughMove* bestMove = &mvStack[currDepth];
+		ScoredBreakthroughMove* nextMove = &mvStack[currDepth + 1];
+		bestMove->set(mvArray[0].row1(), mvArray[0].col1(), mvArray[0].row2(), mvArray[0].col2(), bestScore);
 		for (int i = 0; i < mvArray.size();i++){
-			
+
 			ScoredBreakthroughMove tempMv = ScoredBreakthroughMove(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), 0);
 			BreakthroughState tempBrd = brd;
 			brd.makeMove(*tempMv.Move);
 			alphaBeta(brd, currDepth + 1, alpha, beta);  // Check out move
 			brd = tempBrd;
 			//bestMove.setScore(mvStack[currDepth].score);
-			nextMove.setScore(mvStack[currDepth + 1].score);
+			//nextMove.setScore(mvStack[currDepth + 1].score);
 			//bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), mvStack[currDepth].score);
 			//bestMove = mvStack[currDepth];
 			//nextMove = mvStack[currDepth + 1];
 			// Check out the results, relative to what we've seen before
-			if (isMaximize && (nextMove.score > bestMove.score)) {
-				bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
-				mvStack[currDepth].set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
-				printf("Current Depth: %d Maximum Score: %f\n",currDepth, nextMove.score);
+			if (isMaximize && (nextMove->score > bestMove->score)) {
+				bestMove->set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove->score);
+				//mvStack[currDepth].set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
+				//printf("Current Depth: %d Maximum Score: %f\n",currDepth, nextMove->score);
 			}
-			else if (!isMaximize && (nextMove.score < bestMove.score)) {
-				bestMove.set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
-				mvStack[currDepth].set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
-				printf("Current Depth: %d Minimal Score: %f\n",currDepth, nextMove.score);
+			else if (!isMaximize && (nextMove->score < bestMove->score)) {
+				bestMove->set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove->score);
+				//mvStack[currDepth].set(mvArray[i].row1(), mvArray[i].col1(), mvArray[i].row2(), mvArray[i].col2(), nextMove.score);
+				//printf("Current Depth: %d Minimal Score: %f\n",currDepth, nextMove->score);
 			}
 
 			// Update alpha and beta. Perform pruning, if possible.
 			//printf("Test");
 			if (isMinimize) {
-				beta = min(bestMove.score, beta);
+				beta = min(bestMove->score, beta);
 				if (beta <= alpha || beta == -DBL_MAX) {//bestMove.score <= alpha || bestMove.score == -DBL_MAX) {
 					return;
 				}
 			}
 			else {
-				alpha = max(bestMove.score, alpha);
+				alpha = max(bestMove->score, alpha);
 				if (alpha >= beta || alpha == DBL_MAX) {
 					return;
 				}

@@ -7,6 +7,8 @@
 #include "BreakthroughMove.h"
 #include <stdio.h>
 #include "ScoredBreakthroughMove.h"
+#include <algorithm>
+#include <stdlib.h>
 class AlphaBetaBreakthroughPlayer : public GamePlayer {
 public:
 	AlphaBetaBreakthroughPlayer(std::string nickname);
@@ -17,7 +19,7 @@ private:
 	void alphaBeta(BreakthroughState brd, int currDepth,
 		double alpha, double beta);
 	boolean terminalValue(GameState &brd, ScoredBreakthroughMove *mv);
-#define DepthLimit 3
+#define DepthLimit 4
 	ScoredBreakthroughMove mvStack[DepthLimit];
 
 

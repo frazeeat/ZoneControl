@@ -113,7 +113,7 @@ Defensive play - if my piece is threatened by my own piece, it is "DEFENSIVE" pl
 Offensive play
 */
 
-double Heuristic::defensivePlayFeature(BreathroughState &state, int row, int col, char cell) {
+double Heuristic::defensivePlayFeature(BreakthroughState &state, int row, int col, char cell) {
 	/*
 	 * Award points for pieces that threaten ally-controlled squares.
 	 * 
@@ -124,14 +124,14 @@ double Heuristic::defensivePlayFeature(BreathroughState &state, int row, int col
 		if (col != 0 && cell == state.getCell(row+1, col-1)) {
 			score++;
 		}
-		if (col != 7 && cell == state.getCell(row+1, col+1) {
+		if (col != 7 && cell == state.getCell(row+1, col+1)) {
 			score++;
 		}
 	} else if (cell == state.AWAYSYM && row != 0) {
-		if (col != 0 && cell == state.getCell(row-1, col-1) {
+		if (col != 0 && cell == state.getCell(row-1, col-1)) {
 			score++;
 		}
-		if (col != 7 && cell == state.getCell(row-1, col+1) {
+		if (col != 7 && cell == state.getCell(row-1, col+1)) {
 			score++;
 		}
 	}
@@ -160,7 +160,7 @@ double Heuristic::evaluateState(BreakthroughState &state){
 	for (int r = 0; r < rows; r++) {
 		for (int c = 0; c < cols; c++) { //heh. c plus plus. heh.
 			cell = state.getCell(r, c);
-			if (cell == state.HOMESYM || ccell == state.AWAYSYM) {
+			if (cell == state.HOMESYM || cell == state.AWAYSYM) {
 				score += w1 * feature1(state, r, c, cell);
 				score += w2 * feature2(state, r, c, cell);
 				score += w3 * feature3(state, r, c, cell);
