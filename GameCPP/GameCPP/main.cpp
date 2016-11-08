@@ -54,8 +54,9 @@ void sometests() {
 }
 
 int main(int argc, char *argv[]) {
-	AlphaBetaBreakthroughPlayer p("AlphaBeta");
-//	p.solvePuzzles({ "bt1.txt", "bt2.txt", "bt3.txt", "bt4.txt" });
-    p.compete(argc, argv);   // Compete in tournament
+	AlphaBetaBreakthroughPlayer p("FixedLolgag");
+	p.solvePuzzles({ "bt1.txt", "bt2.txt", "bt3.txt", "bt4.txt" });
+    //p.compete(argc, argv);   // Compete in tournament
+	system("Pause");
     return 0;
 }

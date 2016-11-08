@@ -1,159 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="AlphaBetaBreakthroughPlayer.cpp" />
+    <ClCompile Include="BoardGameMove.cpp" />
+    <ClCompile Include="BoardGameState.cpp" />
+    <ClCompile Include="BreakthroughState.cpp" />
+    <ClCompile Include="ClobberState.cpp" />
+    <ClCompile Include="DomineeringState.cpp" />
+    <ClCompile Include="GamePlayer.cpp" />
+    <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="GameStateFactory.cpp" />
+    <ClCompile Include="Heuristic.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Network.cpp" />
+    <ClCompile Include="Params.cpp" />
+    <ClCompile Include="RandomBreakthroughPlayer.cpp" />
+    <ClCompile Include="RandomDomineeringPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BoardGameMove.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BoardGameState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ClobberState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DomineeringState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GamePlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameStateFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Network.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Params.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomDomineeringPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BreakthroughState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomBreakthroughPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AlphaBetaBreakthroughPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-<<<<<<< HEAD
-=======
-    <ClCompile Include="Heuristic.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
->>>>>>> 421f8eb6a37efe9c8feac5356eca09b330aae27b
+    <ClInclude Include="AlphaBetaBreakthroughPlayer.h" />
+    <ClInclude Include="BoardGameMove.h" />
+    <ClInclude Include="BoardGameState.h" />
+    <ClInclude Include="BreakthroughMove.h" />
+    <ClInclude Include="BreakthroughState.h" />
+    <ClInclude Include="ClobberMove.h" />
+    <ClInclude Include="ClobberState.h" />
+    <ClInclude Include="DomineeringMove.h" />
+    <ClInclude Include="DomineeringState.h" />
+    <ClInclude Include="DoublePosBoardGameMove.h" />
+    <ClInclude Include="GameMove.h" />
+    <ClInclude Include="GamePlayer.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="GameStateFactory.h" />
+    <ClInclude Include="Heuristic.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="Network.h" />
+    <ClInclude Include="Params.h" />
+    <ClInclude Include="RandomBreakthroughPlayer.h" />
+    <ClInclude Include="RandomDomineeringPlayer.h" />
+    <ClInclude Include="ScoredBreakthroughMove.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BoardGameMove.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BoardGameState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ClobberMove.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ClobberState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DomineeringMove.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DomineeringState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DoublePosBoardGameMove.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMove.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GamePlayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameStateFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Network.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Params.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomDomineeringPlayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BreakthroughMove.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BreakthroughState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomBreakthroughPlayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AlphaBetaBreakthroughPlayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="ScoredBreakthroughMove.h">
-=======
-    <ClInclude Include="Heuristic.h">
->>>>>>> 421f8eb6a37efe9c8feac5356eca09b330aae27b
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="bt1.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="bt2.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="bt3.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="bt4.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="config\breakthrough.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="config\clobber.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="config\domineering.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="config\tournament.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
+    <Text Include="bt1.txt" />
+    <Text Include="bt2.txt" />
+    <Text Include="bt3.txt" />
+    <Text Include="bt4.txt" />
+    <Text Include="config\breakthrough.txt" />
+    <Text Include="config\clobber.txt" />
+    <Text Include="config\domineering.txt" />
+    <Text Include="config\tournament.txt" />
   </ItemGroup>
 </Project>

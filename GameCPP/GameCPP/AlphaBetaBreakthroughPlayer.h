@@ -12,16 +12,15 @@
 class AlphaBetaBreakthroughPlayer : public GamePlayer {
 public:
 	AlphaBetaBreakthroughPlayer(std::string nickname);
-
+	bool AlphaBetaBreakthroughPlayer::doesThisWin(BreakthroughMove mv, BreakthroughState brd);
 	GameMove *getMove(GameState &state,
 		const std::string &lastMv) override;
 private:
 	void alphaBeta(BreakthroughState brd, int currDepth,
 		double alpha, double beta);
 	boolean terminalValue(GameState &brd, ScoredBreakthroughMove *mv);
-#define DepthLimit 4
+#define DepthLimit 5
 	ScoredBreakthroughMove mvStack[DepthLimit];
-
 
 };
 

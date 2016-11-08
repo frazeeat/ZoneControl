@@ -22,20 +22,8 @@ GameMove* AlphaBetaBreakthroughPlayer::getMove(GameState &state,
 			mvStack[i] = ScoredBreakthroughMove(0, 0, 0, 0, ((st.getWho() == Who::AWAY) ? -DBL_MAX : DBL_MAX));
 		}
 	}
-	/*std::vector<BreakthroughMove> mvArray;
-	/for (int r = 0; r < st.ROWS; r++) {
-		for (int c = 0; c < st.COLS; c++) {
-			int rowDelta = state.getWho() == Who::HOME ? +1 : -1;
-			for (int dc = -1; dc <= +1; dc++) {
-				BreakthroughMove mv(r, c, r + rowDelta, c + dc);
-				if (state.moveOK(mv)) {
-					mvArray.push_back(BreakthroughMove(mv));
-				}
-			}
-		}
-	}*/
 	alphaBeta(st, 0, -DBL_MAX, DBL_MAX);
-	printf("Final Score: %f", mvStack[0].score);
+	//printf("Final Score: %f", mvStack[0].score);
 	return mvStack[0].Move;
 }
 void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth,
@@ -43,7 +31,7 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 	boolean isMaximize = (brd.getWho() == Who::HOME);
 	boolean isMinimize = !isMaximize;
 	boolean isTerminal = terminalValue(brd, &mvStack[currDepth]);
-	if (isTerminal) {
+	if (isTerminal ) {
 		
 	}
 	else if (currDepth == DepthLimit-1) {
@@ -60,6 +48,10 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 					BreakthroughMove mv(r, c, r + rowDelta, c + dc);
 					if (brd.moveOK(mv)) {
 						mvArray.push_back(BreakthroughMove(mv));
+						if (doesThisWin(mv,brd)){
+							mvArray.clear();
+							mvArray.push_back(BreakthroughMove(mv));
+						}
 					}
 				}
 			}
@@ -110,6 +102,20 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 			}
 		}
 	}
+}
+
+bool AlphaBetaBreakthroughPlayer::doesThisWin(BreakthroughMove mv, BreakthroughState brd){
+	if (brd.getWho() == Who::HOME){
+		if (mv.row2() == brd.ROWS){
+			return true;
+		}
+	}
+	else{
+		if(mv.row2() == 0){
+			return true;
+		}
+	}
+	return false;
 }
 
 boolean AlphaBetaBreakthroughPlayer::terminalValue(GameState &brd, ScoredBreakthroughMove *mv) {

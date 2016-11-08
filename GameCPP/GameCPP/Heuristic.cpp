@@ -8,6 +8,7 @@ double Heuristic::feature1(BreakthroughState &state, int row, int col, char cell
 	 */
 	int distance = 0;
 
+
 	if (cell == state.HOMESYM) {
 		distance = row;
 	} else if (cell == state.AWAYSYM) {
@@ -147,9 +148,9 @@ double Heuristic::evaluateState(BreakthroughState &state){
 	int cols = state.COLS;
 	double score = 0;
 	// Weights should ideally add up to 1.0
-	double w1 = .55,
-	       w2 = .2,
-	       w3 = .2,
+	double w1 = .45,
+	       w2 = .25,
+	       w3 = .25,
 	       w4 = .05;
 	/* For each feature: 
 	 *	Calculate the score of it - >0 means it favors HOME, <0 favors AWAY.
