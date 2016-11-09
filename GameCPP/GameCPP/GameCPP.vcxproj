@@ -20,6 +20,7 @@
     <ClCompile Include="GamePlayer.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateFactory.cpp" />
+    <ClCompile Include="HashValue.cpp" />
     <ClCompile Include="Heuristic.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Network.cpp" />

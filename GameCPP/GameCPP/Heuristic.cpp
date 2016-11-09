@@ -139,8 +139,12 @@ double Heuristic::defensivePlayFeature(BreakthroughState &state, int row, int co
 		}
 	}
 	
-	//if (cell == 
+	if (cell == state.HOMESYM) {
 		return score;
+	}
+	else {
+		return -1 * score;
+	}
 }
 
 

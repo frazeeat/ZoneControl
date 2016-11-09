@@ -2,12 +2,62 @@
 #include "BreakthroughMove.h"
 #include "BreakthroughState.h"
 #include "Heuristic.h"
+#include <random>
+
 
 
 AlphaBetaBreakthroughPlayer::AlphaBetaBreakthroughPlayer(std::string nickname)
 : GamePlayer(nickname, "Breakthrough") {
+	// In constructor, create the initial Zobrist hash of the board,
+	//      and populate the array of piece/locations.
+	Zobrist_hash_board = 0;
+	int white = 0,
+		black = 1;
+	std::random_device rnd;
+	std::mt19937_64 rng(rnd());
+	std::uniform_int_distribution<long long int> dist(std::llround(0), std::llround(std::pow(2, 64)));
 
+	// For each piece/location pair, generate a random 64 bit number to represent it.
+	for (int i = 0; i < 128; i++) {
+		board_pieces_hash[i] = dist(rng);
+	}
+
+	// Hash the initial board state:
+	/*
+	* WWWWWWWW 0
+	* WWWWWWWW 1
+	*   ...
+	*   ...
+	* BBBBBBBB 6
+	* BBBBBBBB 7
+	*/
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8; j++) {
+			if (i < 2) { // White pieces
+				Zobrist_hash_board = Zobrist_hash_board ^ board_pieces_hash[white * 64 + i * 8 + j];
+			}
+			else if (i >= 6) { // Black pieces
+				Zobrist_hash_board = Zobrist_hash_board ^ board_pieces_hash[black * 64 + i * 8 + j];
+			}
+			// else empty, don't hash anything.
+		}
+	}
+
+	// Now Zobrist_hash_board contains the hashed state of the board.
 }
+
+long long AlphaBetaBreakthroughPlayer::hash_piece(int row, int col, Who color) {
+	int mod = 0;
+	if (color == Who::HOME) {
+		mod = 0;
+	}
+	else if (color == Who::AWAY) {
+		mod = 1;
+	}
+
+	return board_pieces_hash[mod * 64 + row * 8 + col];
+}
+
 Heuristic Eval;
 time_t BeginTurnTime;
 long MAX_TURN_TIME = 2;

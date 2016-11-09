@@ -11,6 +11,9 @@
 #include <stdlib.h>
 #include <ctime>
 #include <string>
+#include "HashValue.cpp"
+#include <unordered_map>
+
 class AlphaBetaBreakthroughPlayer : public GamePlayer {
 public:
 	AlphaBetaBreakthroughPlayer(std::string nickname);
@@ -21,9 +24,13 @@ private:
 	void alphaBeta(BreakthroughState brd, int currDepth,
 		double alpha, double beta);
 	bool terminalValue(GameState &brd, ScoredBreakthroughMove *mv);
+	long long hash_piece(int row, int col, Who color);
 	int DepthLimit = 3;
 #define MAX_DEPTH_LIMIT 8
 	ScoredBreakthroughMove mvStack[MAX_DEPTH_LIMIT];
+	long long Zobrist_hash_board;
+	long long board_pieces_hash[128];
+	std::unordered_map<long long, HashValue> transposition_table;
 
 };
 

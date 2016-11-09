@@ -16,6 +16,7 @@
     <ClCompile Include="Params.cpp" />
     <ClCompile Include="RandomBreakthroughPlayer.cpp" />
     <ClCompile Include="RandomDomineeringPlayer.cpp" />
+    <ClCompile Include="HashValue.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AlphaBetaBreakthroughPlayer.h" />
