@@ -13,6 +13,7 @@
 #include "BoardGameState.h"
 #include "BreakthroughMove.h"
 #include <stdio.h>
+#include <iterator>
 #include <vector>
 
 class BreakthroughState : public BoardGameState {

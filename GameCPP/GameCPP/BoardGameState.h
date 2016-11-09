@@ -11,6 +11,7 @@
 
 #include "GameState.h"
 #include "BoardGameMove.h"
+#include <iterator>
 
 class BoardGameState : public GameState {
     

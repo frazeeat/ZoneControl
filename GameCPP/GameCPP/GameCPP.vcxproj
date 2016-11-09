@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -11,6 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AlphaBetaBreakthroughPlayer.cpp" />
     <ClCompile Include="BoardGameMove.cpp" />
     <ClCompile Include="BoardGameState.cpp" />
     <ClCompile Include="BreakthroughState.cpp" />
@@ -19,6 +20,7 @@
     <ClCompile Include="GamePlayer.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="GameStateFactory.cpp" />
+    <ClCompile Include="Heuristic.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Network.cpp" />
     <ClCompile Include="Params.cpp" />
@@ -26,6 +28,7 @@
     <ClCompile Include="RandomDomineeringPlayer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AlphaBetaBreakthroughPlayer.h" />
     <ClInclude Include="BoardGameMove.h" />
     <ClInclude Include="BoardGameState.h" />
     <ClInclude Include="BreakthroughMove.h" />
@@ -39,11 +42,13 @@
     <ClInclude Include="GamePlayer.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateFactory.h" />
+    <ClInclude Include="Heuristic.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Network.h" />
     <ClInclude Include="Params.h" />
     <ClInclude Include="RandomBreakthroughPlayer.h" />
     <ClInclude Include="RandomDomineeringPlayer.h" />
+    <ClInclude Include="ScoredBreakthroughMove.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="bt1.txt" />
@@ -59,18 +64,19 @@
     <ProjectGuid>{11612FE1-002A-4197-9677-15F0818C9B46}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>GameCPP</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140_xp</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
