@@ -15,8 +15,6 @@ double Heuristic::feature1(BreakthroughState &state, int row, int col, char cell
 		distance = 7 - row;
 	}
 	distance *= distance;
-	//distance *= distance;
-	//printf("Distance: %d", distance);
 	if (cell == state.HOMESYM){
 		return distance;
 	} else {
@@ -40,7 +38,6 @@ double Heuristic::feature2(BreakthroughState &state, int row, int col, char cell
 	} else {
 		score = 0;
 	}
-	//printf("Score: %f", score);
 	if (cell == state.HOMESYM) {
 		return score;
 	} else {
@@ -67,7 +64,6 @@ double Heuristic::feature3(BreakthroughState &state, int row, int col, char cell
 			score++;
 		}
 	}
-	//printf("H3 Score: %f\n", score);
 	if (cell == state.HOMESYM) {
 		return score;
 	} else {
@@ -175,12 +171,6 @@ double Heuristic::evaluateState(BreakthroughState &state){
 			}
 		}
 	}
-
-
-	//printf("Score: %f\n", score);
-	//score += w1 * feature1(state);
-	//score += w2 * feature2(state);
-	//score += w3 * feature3(state);
 	return score;
 
 }
