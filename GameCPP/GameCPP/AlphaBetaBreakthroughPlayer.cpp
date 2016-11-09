@@ -7,7 +7,6 @@
 
 
 AlphaBetaBreakthroughPlayer::AlphaBetaBreakthroughPlayer(std::string nickname)
-<<<<<<< HEAD
 : GamePlayer(nickname, "Breakthrough") {
 	// In constructor, create the initial Zobrist hash of the board,
 	//      and populate the array of piece/locations.
@@ -46,9 +45,6 @@ AlphaBetaBreakthroughPlayer::AlphaBetaBreakthroughPlayer(std::string nickname)
 
 	// Now Zobrist_hash_board contains the hashed state of the board.
 }
-=======
-	: GamePlayer(nickname, "Breakthrough") {
->>>>>>> 3249c704f96e60115c2810d79abc9b832d124394
 
 long long AlphaBetaBreakthroughPlayer::hash_piece(int row, int col, Who color) {
 	int mod = 0;

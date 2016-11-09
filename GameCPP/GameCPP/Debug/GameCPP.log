@@ -1,48 +1,53 @@
-<<<<<<< HEAD
-﻿Build started 11/9/2016 5:24:36 PM.
-     1>Project "C:\Users\schultjw\Documents\SourceTree\ZoneControl\GameCPP\GameCPP\GameCPP.vcxproj" on node 2 (Build target(s)).
+﻿Build started 11/9/2016 5:46:23 PM.
+     1>Project "C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\GameCPP\GameCPP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft SDKs\Windows" /AI"C:\Program Files (x86)\Microsoft SDKs\Windows" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AlphaBetaBreakthroughPlayer.cpp HashValue.cpp Heuristic.cpp main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft SDKs\Windows" /AI"C:\Program Files (x86)\Microsoft SDKs\Windows" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AlphaBetaBreakthroughPlayer.cpp BoardGameMove.cpp BoardGameState.cpp BreakthroughState.cpp ClobberState.cpp DomineeringState.cpp GamePlayer.cpp GameState.cpp GameStateFactory.cpp HashValue.cpp Heuristic.cpp main.cpp Network.cpp Params.cpp RandomBreakthroughPlayer.cpp RandomDomineeringPlayer.cpp
+         RandomDomineeringPlayer.cpp
+         RandomBreakthroughPlayer.cpp
+         Params.cpp
+         Network.cpp
+         main.cpp
          Heuristic.cpp
          HashValue.cpp
+         GameStateFactory.cpp
+         GameState.cpp
+         GamePlayer.cpp
+         DomineeringState.cpp
+         ClobberState.cpp
+         BreakthroughState.cpp
+         BoardGameState.cpp
+         BoardGameMove.cpp
          AlphaBetaBreakthroughPlayer.cpp
-     1>c:\users\schultjw\documents\sourcetree\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(123): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
-     1>c:\users\schultjw\documents\sourcetree\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(130): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
-     1>c:\users\schultjw\documents\sourcetree\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(221): warning C4018: '<': signed/unsigned mismatch
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(10): error C2143: syntax error: missing ';' before '<<'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(10): error C2761: '{ctor}': member function redeclaration not allowed
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(10): error C2059: syntax error: '<<'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(11): error C2143: syntax error: missing ')' before ','
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(11): error C2259: 'GamePlayer': cannot instantiate abstract class
+         c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(11): note: due to following members:
+         c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(11): note: 'GameMove *GamePlayer::getMove(GameState &,const std::string &)': is abstract
+         c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\gameplayer.h(32): note: see declaration of 'GamePlayer::getMove'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(11): error C2512: 'GamePlayer': no appropriate default constructor available
+         c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\gameplayer.h(21): note: see declaration of 'GamePlayer'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(11): error C2059: syntax error: 'string'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(11): error C2059: syntax error: ')'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(11): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(11): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(49): error C2059: syntax error: '=='
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(50): error C2143: syntax error: missing ')' before ','
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(50): error C2259: 'GamePlayer': cannot instantiate abstract class
+         c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(50): note: due to following members:
+         c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(50): note: 'GameMove *GamePlayer::getMove(GameState &,const std::string &)': is abstract
+         c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\gameplayer.h(32): note: see declaration of 'GamePlayer::getMove'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(50): error C2512: 'GamePlayer': no appropriate default constructor available
+         c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\gameplayer.h(21): note: see declaration of 'GamePlayer'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(50): error C2059: syntax error: 'string'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(50): error C2059: syntax error: ')'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(50): error C2143: syntax error: missing ';' before '{'
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(50): error C2447: '{': missing function header (old-style formal list?)
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(242): fatal error C1004: unexpected end-of-file found
          Generating Code...
-         Compiling...
-         main.cpp
-         Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\schultjw\Documents\SourceTree\ZoneControl\GameCPP\Debug\GameCPP.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\schultjw\Documents\SourceTree\ZoneControl\GameCPP\Debug\GameCPP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\schultjw\Documents\SourceTree\ZoneControl\GameCPP\Debug\GameCPP.lib" /MACHINE:X86 Debug\AlphaBetaBreakthroughPlayer.obj
-=======
-﻿Build started 11/9/2016 5:17:13 PM.
-     1>Project "C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\GameCPP\GameCPP.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\Debug\GameCPP.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\Debug\GameCPP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\Debug\GameCPP.lib" /MACHINE:X86 Debug\AlphaBetaBreakthroughPlayer.obj
->>>>>>> 3249c704f96e60115c2810d79abc9b832d124394
-         Debug\BoardGameMove.obj
-         Debug\BoardGameState.obj
-         Debug\BreakthroughState.obj
-         Debug\ClobberState.obj
-         Debug\DomineeringState.obj
-         Debug\GamePlayer.obj
-         Debug\GameState.obj
-         Debug\GameStateFactory.obj
-         Debug\HashValue.obj
-         Debug\Heuristic.obj
-         Debug\main.obj
-         Debug\Network.obj
-         Debug\Params.obj
-         Debug\RandomBreakthroughPlayer.obj
-         Debug\RandomDomineeringPlayer.obj
-         GameCPP.vcxproj -> C:\Users\schultjw\Documents\SourceTree\ZoneControl\GameCPP\Debug\GameCPP.exe
-     1>Done Building Project "C:\Users\schultjw\Documents\SourceTree\ZoneControl\GameCPP\GameCPP\GameCPP.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\GameCPP\GameCPP.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-<<<<<<< HEAD
-Time Elapsed 00:00:03.13
-=======
-Time Elapsed 00:00:00.53
->>>>>>> 3249c704f96e60115c2810d79abc9b832d124394
+Time Elapsed 00:00:08.98
