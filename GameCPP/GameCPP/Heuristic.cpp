@@ -14,6 +14,7 @@ double Heuristic::feature1(BreakthroughState &state, int row, int col, char cell
 	} else if (cell == state.AWAYSYM) {
 		distance = 7 - row;
 	}
+	//distance *= distance;
 	//printf("Distance: %d", distance);
 	if (cell == state.HOMESYM){
 		return distance;
