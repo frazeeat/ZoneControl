@@ -1,13 +1,13 @@
-﻿Build started 11/9/2016 12:52:11 PM.
-     1>Project "C:\Users\Stephen\Desktop\CSE486\GameProject\ZoneControl\GameCPP\GameCPP\GameCPP.vcxproj" on node 2 (Build target(s)).
+﻿Build started 11/9/2016 3:32:04 PM.
+     1>Project "C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\GameCPP\GameCPP.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft SDKs\Windows" /AI"C:\Program Files (x86)\Microsoft SDKs\Windows" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _USING_V110_SDK71_ /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt AlphaBetaBreakthroughPlayer.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft SDKs\Windows" /AI"C:\Program Files (x86)\Microsoft SDKs\Windows" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt AlphaBetaBreakthroughPlayer.cpp
          AlphaBetaBreakthroughPlayer.cpp
-     1>c:\users\stephen\desktop\cse486\gameproject\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(52): warning C4244: 'initializing' : conversion from 'time_t' to 'long', possible loss of data
-     1>c:\users\stephen\desktop\cse486\gameproject\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(56): warning C4244: '=' : conversion from 'time_t' to 'long', possible loss of data
-     1>c:\users\stephen\desktop\cse486\gameproject\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(143): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(73): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(80): warning C4244: '=': conversion from 'time_t' to 'int', possible loss of data
+     1>c:\users\frazeeat\desktop\zonecontrol\gamecpp\gamecpp\alphabetabreakthroughplayer.cpp(171): warning C4018: '<': signed/unsigned mismatch
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Stephen\Desktop\CSE486\GameProject\ZoneControl\GameCPP\Debug\GameCPP.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Stephen\Desktop\CSE486\GameProject\ZoneControl\GameCPP\Debug\GameCPP.pdb" /SUBSYSTEM:CONSOLE,"5.01" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Stephen\Desktop\CSE486\GameProject\ZoneControl\GameCPP\Debug\GameCPP.lib" /MACHINE:X86 Debug\AlphaBetaBreakthroughPlayer.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\Debug\GameCPP.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\Debug\GameCPP.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\Debug\GameCPP.lib" /MACHINE:X86 Debug\AlphaBetaBreakthroughPlayer.obj
          Debug\BoardGameMove.obj
          Debug\BoardGameState.obj
          Debug\BreakthroughState.obj
@@ -22,9 +22,9 @@
          Debug\Params.obj
          Debug\RandomBreakthroughPlayer.obj
          Debug\RandomDomineeringPlayer.obj
-         GameCPP.vcxproj -> C:\Users\Stephen\Desktop\CSE486\GameProject\ZoneControl\GameCPP\Debug\GameCPP.exe
-     1>Done Building Project "C:\Users\Stephen\Desktop\CSE486\GameProject\ZoneControl\GameCPP\GameCPP\GameCPP.vcxproj" (Build target(s)).
+         GameCPP.vcxproj -> C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\Debug\GameCPP.exe
+     1>Done Building Project "C:\Users\frazeeat\Desktop\ZoneControl\GameCPP\GameCPP\GameCPP.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.59
+Time Elapsed 00:00:01.87

@@ -12,12 +12,16 @@ Heuristic Eval;
 time_t BeginTurnTime;
 long MAX_TURN_TIME = 2;
 int movesMade = 0;
+bool first = true;
 //int furthestRowHome=1;
 //int furthestRowAway=6;
 GameMove* AlphaBetaBreakthroughPlayer::getMove(GameState &state,
 	const std::string &lastMv) {
-	BeginTurnTime = time(nullptr);
 	BreakthroughState st = static_cast<BreakthroughState&>(state);
+	if (lastMv.length() < 4) {
+		MAX_TURN_TIME = 2;
+		movesMade = 0;
+	}
 	/*if (lastMv.length() > 4){
 		if (state.getWho() == Who::HOME){
 			if (furthestRowAway > stoi(lastMv.substr(4, 1))){
@@ -39,29 +43,54 @@ GameMove* AlphaBetaBreakthroughPlayer::getMove(GameState &state,
 		DepthLimit = 3;
 	}
 	*/
-	for (int i = 0; i < MAX_DEPTH_LIMIT; i++) {
-		if (i % 2 == 0){
-			mvStack[i] = ScoredBreakthroughMove(0, 0, 0, 0, ((st.getWho() == Who::HOME) ? -DBL_MAX : DBL_MAX));
+	if (first) {
+		for (int j = 0; j < MAX_DEPTH_LIMIT; j++) {
+			if (j % 2 == 0) {
+				mvStack[j] = ScoredBreakthroughMove(0, 0, 0, 0, ((st.getWho() == Who::HOME) ? -DBL_MAX : DBL_MAX));
+			}
+			else {
+				mvStack[j] = ScoredBreakthroughMove(0, 0, 0, 0, ((st.getWho() == Who::AWAY) ? -DBL_MAX : DBL_MAX));
+			}
 		}
-		else{
-			mvStack[i] = ScoredBreakthroughMove(0, 0, 0, 0, ((st.getWho() == Who::AWAY) ? -DBL_MAX : DBL_MAX));
+		first = false;
+	}
+	else {
+		for (int j = 0; j < MAX_DEPTH_LIMIT; j++) {
+			if (j == 0) {
+				mvStack[j] = ScoredBreakthroughMove(0, 0, 0, 0, ((st.getWho() == Who::HOME) ? -DBL_MAX : DBL_MAX));
+			}
+			else if (j % 2 == 0) {
+				mvStack[j].set(0, 0, 0, 0, ((st.getWho() == Who::HOME) ? -DBL_MAX : DBL_MAX));
+			}
+			else {
+				mvStack[j].set(0, 0, 0, 0, ((st.getWho() == Who::AWAY) ? -DBL_MAX : DBL_MAX));
+			}
 		}
 	}
+	BeginTurnTime = time(nullptr);
 	int i = 3;
-	BreakthroughMove *mv = &BreakthroughMove();
-	long curtime = time(nullptr) - BeginTurnTime;
+	BreakthroughMove mv = BreakthroughMove();
+	int curtime = time(nullptr) - BeginTurnTime;
+	if (curtime < 0) {
+		printf("This is what broke");
+	}
 	while (i < MAX_DEPTH_LIMIT && curtime<MAX_TURN_TIME){
 		DepthLimit = i;
 		alphaBeta(st, 0, -DBL_MAX, DBL_MAX);
 		curtime = time(nullptr) - BeginTurnTime;
 		if (curtime < MAX_TURN_TIME){
-			mv = mvStack[0].Move;
+			mv = *mvStack[0].Move;
+			if (mvStack[0].score == DBL_MAX||mvStack[0].score == -DBL_MAX) {
+				break;
+			}
 			i++;
 		}
 	}
+	mvStack[0].set(mv.row1(),mv.col1(),mv.row2(),mv.col2(),0);
 	movesMade++;
 	if (movesMade == 4){
 		MAX_TURN_TIME = 5;
+	//	DepthLimit = 5;
 	}
 	//printf("Score: %f", mvStack[0].score);
 	/*
@@ -76,11 +105,11 @@ GameMove* AlphaBetaBreakthroughPlayer::getMove(GameState &state,
 		}
 	}
 	*/
-
-	return mv;
+	return mvStack[0].Move;
 }
 void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth,
 	double alpha, double beta){
+	std::vector<BreakthroughMove> mvArray;
 	bool isMaximize = (brd.getWho() == Who::HOME);
 	bool isMinimize = !isMaximize;
 	bool isTerminal = terminalValue(brd, &mvStack[currDepth]);
@@ -106,7 +135,6 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 			//furthestRowAway = 7;
 			//row = brd.ROWS;
 		//}
-		std::vector<BreakthroughMove> mvArray;
 		for (int r = 0; r < brd.ROWS; r++) {
 			for (int c = 0; c < brd.COLS; c++) {
 				for (int dc = -1; dc <= +1; dc++) {
@@ -200,7 +228,7 @@ void AlphaBetaBreakthroughPlayer::alphaBeta(BreakthroughState brd, int currDepth
 
 bool AlphaBetaBreakthroughPlayer::doesThisWin(BreakthroughMove mv, BreakthroughState brd){
 	if (brd.getWho() == Who::HOME){
-		if (mv.row2() == brd.ROWS){
+		if (mv.row2() == brd.ROWS-1){
 			return true;
 		}
 	}

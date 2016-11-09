@@ -21,8 +21,8 @@ private:
 	void alphaBeta(BreakthroughState brd, int currDepth,
 		double alpha, double beta);
 	bool terminalValue(GameState &brd, ScoredBreakthroughMove *mv);
-	int DepthLimit = 5;
-#define MAX_DEPTH_LIMIT 10
+	int DepthLimit = 3;
+#define MAX_DEPTH_LIMIT 8
 	ScoredBreakthroughMove mvStack[MAX_DEPTH_LIMIT];
 
 };

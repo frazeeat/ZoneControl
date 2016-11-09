@@ -57,6 +57,6 @@ int main(int argc, char *argv[]) {
 	AlphaBetaBreakthroughPlayer p("ZoneControl");
 	//p.solvePuzzles({ "bt1.txt", "bt2.txt", "bt3.txt", "bt4.txt" });
     p.compete(argc, argv);   // Compete in tournament
-	system("Pause");
+	//system("Pause");
     return 0;
 }
